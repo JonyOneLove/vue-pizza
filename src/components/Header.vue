@@ -1,6 +1,9 @@
 <template>
   <header class="header">
     <div class="container">
+      <a href="#" class="menu-btn" @click="$emit('showOpen')">
+        <span></span>
+      </a>
       <router-link to="/" class="header__logo">
         <img width="38" src="../assets/img/pizza-logo.svg" alt="Pizza logo" />
         <div>
@@ -54,6 +57,7 @@
 import { computed } from '@vue/reactivity'
 import { useStore } from 'vuex'
 export default {
+  //  props: ['showSidebar'],
   setup() {
     const store = useStore()
 
@@ -95,6 +99,37 @@ export default {
 
     p {
       color: #7b7b7b;
+    }
+  }
+  .menu-btn {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #fe5f1e;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    span {
+      position: absolute;
+      top: 50%;
+      margin-top: -1px;
+      left: 50%;
+      margin-left: -10px;
+      width: 20px;
+      height: 2px;
+      background-color: #fff;
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        transform: translateY(-5px);
+        width: 100%;
+        height: 100%;
+        background-color: inherit;
+      }
+      &::after {
+        transform: translateY(5px);
+      }
     }
   }
 }

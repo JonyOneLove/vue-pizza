@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Cart from '../views/Cart.vue'
 import E404 from '../views/E404.vue'
@@ -22,8 +22,8 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
   routes,
+  history: createWebHistory(process.env.BASE_URL),
 })
 
 export default router

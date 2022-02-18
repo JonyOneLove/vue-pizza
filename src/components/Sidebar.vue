@@ -53,18 +53,20 @@ export default {
         },
         {
           title: 'Десерты',
-          icon: '',
-          //  route: '',
         },
         {
           title: 'Комбо',
-          icon: '',
-          //  route: '',
+        },
+        {
+          title: 'Напитки',
+        },
+        {
+          title: 'Корзина',
+          icon: pizzaIcon,
+          route: 'Cart',
         },
         {
           title: 'Админ',
-          icon: '',
-          //  route: '',
         },
       ],
     }

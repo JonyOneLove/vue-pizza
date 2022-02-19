@@ -1,7 +1,14 @@
 <template>
   <div class="pizza-block">
-    <img class="pizza-block__image" :src="pizza.imageUrl" alt="Pizza" />
-    <h4 class="pizza-block__title">{{ pizza.name }}</h4>
+    <img
+      class="pizza-block__image"
+      :src="pizza.imageUrl"
+      alt="Pizza"
+      @click="this.$refs.pizzaModal.openModal()"
+    />
+    <h4 class="pizza-block__title" @click="this.$refs.pizzaModal.openModal()">
+      {{ pizza.name }}
+    </h4>
     <div class="pizza-block__selector">
       <Types />
       <Sizes />
@@ -25,6 +32,7 @@
         <i v-if="pizzaCount">{{ pizzaCount }}</i>
       </div>
     </div>
+    <PizzaModal ref="pizzaModal" />
   </div>
 </template>
 
@@ -33,8 +41,9 @@ import Types from './Types'
 import Sizes from './Sizes'
 import { useStore } from 'vuex'
 import { computed, ref } from '@vue/reactivity'
+import PizzaModal from './pizzaModal.vue'
 export default {
-  components: { Types, Sizes },
+  components: { Types, Sizes, PizzaModal },
   props: ['pizza'],
   setup(props) {
     const store = useStore()
@@ -50,6 +59,7 @@ export default {
 
 <style lang="scss">
 @import '@/assets/scss/app.scss';
+
 .pizza-block {
   width: 280px;
   text-align: center;

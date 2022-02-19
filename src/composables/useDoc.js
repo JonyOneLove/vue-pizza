@@ -1,6 +1,13 @@
 import { ref } from 'vue'
 import { firestore } from '@/firebase/config'
-import { getDocs, collection, query, where } from 'firebase/firestore'
+import {
+  getDocs,
+  collection,
+  query,
+  where,
+  doc,
+  getDoc,
+} from 'firebase/firestore'
 
 const useDoc = () => {
   const getCollection = async (collectionName) => {
@@ -45,7 +52,23 @@ const useDoc = () => {
     return { documents, error }
   }
 
-  return { getCollection, getFilteredCollection }
+  const getDocument = async (collectionName, id) => {
+    const documents = ref(null)
+    const error = ref(null)
+
+    try {
+      const dataCol = doc(firestore, collectionName, id)
+      const response = await getDoc(dataCol)
+
+      documents.value = { ...response.data(), id: response.id }
+    } catch (err) {
+      error.value = err.message
+    }
+
+    return { documents, error }
+  }
+
+  return { getCollection, getFilteredCollection, getDocument }
 }
 
 export default useDoc

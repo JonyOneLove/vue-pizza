@@ -4,6 +4,7 @@
       <a href="#" class="menu-btn" @click="$emit('showOpen')">
         <span></span>
       </a>
+      <button @click="$store.dispatch('getAll')">get</button>
       <router-link to="/" class="header__logo">
         <img width="38" src="../assets/img/pizza-logo.svg" alt="Pizza logo" />
         <div>
@@ -54,10 +55,10 @@
 </template>
 
 <script>
-import { computed } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import { useStore } from 'vuex'
+
 export default {
-  //  props: ['showSidebar'],
   setup() {
     const store = useStore()
 

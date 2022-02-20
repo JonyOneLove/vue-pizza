@@ -53,19 +53,21 @@ const useDoc = () => {
   }
 
   const getDocument = async (collectionName, id) => {
-    const documents = ref(null)
+    const document = ref(null)
     const error = ref(null)
+
+    console.log(id)
 
     try {
       const dataCol = doc(firestore, collectionName, id)
       const response = await getDoc(dataCol)
 
-      documents.value = { ...response.data(), id: response.id }
+      document.value = { ...response.data(), id: response.id }
     } catch (err) {
       error.value = err.message
     }
 
-    return { documents, error }
+    return { document, error }
   }
 
   return { getCollection, getFilteredCollection, getDocument }

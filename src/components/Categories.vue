@@ -33,11 +33,11 @@ export default {
     const categoryActive = computed(() => store.state.category)
 
     const handleActiveItem = (i) => {
-      store.dispatch('getCategoryPizza', i)
+      store.dispatch('getFilteredPizza', i)
     }
     const handleSetNull = () => {
       store.commit('SET_CATEGORY', null)
-      store.dispatch('getAll')
+      store.dispatch('getPizzaAction')
     }
 
     return { categoriesItems, handleActiveItem, categoryActive, handleSetNull }
@@ -48,9 +48,9 @@ export default {
 <style lang="scss">
 @import '@/assets/scss/app.scss';
 .categories {
+  // overflow-x: scroll;
   ul {
     display: flex;
-
     li {
       background-color: #f9f9f9;
       padding: 13px 30px;

@@ -4,9 +4,9 @@
       class="pizza-block__image"
       :src="pizza.imageUrl"
       alt="Pizza"
-      @click="this.$refs.pizzaModal.openModal()"
+      @click="nz(pizza.id)"
     />
-    <h4 class="pizza-block__title" @click="this.$refs.pizzaModal.openModal()">
+    <h4 class="pizza-block__title" @click="nz(pizza.id)">
       {{ pizza.name }}
     </h4>
     <div class="pizza-block__selector">
@@ -54,6 +54,15 @@ export default {
     }
     return { handleAddCart, pizzaCount }
   },
+  data() {
+    return {}
+  },
+  methods: {
+    async nz(id) {
+      await this.$store.dispatch('getPizza', id)
+      this.$refs.pizzaModal.openModal()
+    },
+  },
 }
 </script>
 
@@ -64,7 +73,6 @@ export default {
   width: 280px;
   text-align: center;
   margin-bottom: 65px;
-  cursor: pointer;
 
   &:not(:nth-of-type(4n)) {
     margin-right: 35px;
@@ -73,6 +81,7 @@ export default {
   &__image {
     width: 260px;
     transition: ease 0.3s;
+    cursor: pointer;
     &:hover {
       transform: translateY(2%);
     }
@@ -83,6 +92,7 @@ export default {
     font-weight: 900;
     letter-spacing: 1%;
     margin-bottom: 20px;
+    cursor: pointer;
   }
 
   &__selector {
@@ -129,6 +139,14 @@ export default {
     font-size: 22px;
     line-height: 27px;
     letter-spacing: 0.015em;
+  }
+}
+
+@media (max-width: 799px) {
+  .pizza-block {
+    width: 280px;
+    text-align: center;
+    margin-bottom: 65px;
   }
 }
 </style>

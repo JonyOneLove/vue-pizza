@@ -6,6 +6,8 @@ import store from './store'
 const app = createApp(App)
 app.use(store)
 app.use(router)
-store.dispatch('getAll').then(() => {
-  app.mount('#app')
-})
+app.mount('#app')
+
+// store.dispatch('getPizzaAction').then(() => {
+//   app.mount('#app')
+// })

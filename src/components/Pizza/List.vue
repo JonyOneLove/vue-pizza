@@ -16,7 +16,9 @@ export default {
 
     const pizzas = computed(() => store.state.pizzas)
 
-    // store.dispatch('getPizzaAction')
+    onMounted(() => {
+      store.dispatch('getPizzaAction')
+    })
 
     return { pizzas }
   },

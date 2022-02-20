@@ -4,14 +4,11 @@
       <div class="pizza-modal__backdrop" @click="closeModal" />
       <div class="pizza-modal__row">
         <div class="pizza-modal__img">
-          <img
-            src="https://dodopizza-a.akamaihd.net/static/Img/Products/b145ba5572f4445bbfb335f1a5e25d1c_292x292.jpeg"
-            alt=""
-          />
+          <img :src="pizza.imageUrl" alt="" />
         </div>
-        <div class="pizza-modal__content">
+        <div class="pizza-modal__content" v-if="pizza">
           <div class="pizza-modal__header">
-            <h3 class="pizza-modal__title">Пепперони Фреш с перцем</h3>
+            <h3 class="pizza-modal__title">{{ pizza.name }}</h3>
           </div>
           <p class="pizza-modal__text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque
@@ -23,7 +20,7 @@
             <Sizes />
           </div>
           <button class="pizza-modal__btn">
-            Добавить в коризну за {{ 1 }} Р
+            Добавить в коризну за {{ pizza.price }} Р
           </button>
         </div>
       </div>
@@ -32,6 +29,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import Types from './Types'
 import Sizes from './Sizes'
 
@@ -42,9 +40,14 @@ export default {
       show: false,
     }
   },
+  computed: {
+    ...mapGetters(['pizza']),
+  },
   methods: {
+    ...mapActions(['getPizza']),
     openModal() {
       this.show = true
+      // this.getPizza(id)
     },
     closeModal() {
       this.show = false
@@ -85,9 +88,10 @@ export default {
     z-index: 2;
   }
   &__img {
-    padding: 90px;
+    padding: 10px;
     border: 1px solid red;
     img {
+      width: 70%;
       object-fit: cover;
     }
   }
@@ -104,11 +108,15 @@ export default {
     text-align: center;
     font-size: 16px;
     font-weight: 700;
-    background: rgb(255, 105, 0);
+    background-color: rgb(255, 105, 0);
     border: none;
     padding: 20px 36px;
     border-radius: 30px;
+    transition: 0.2s ease-in;
     cursor: pointer;
+    &:hover {
+      background-color: rgb(170, 71, 0);
+    }
   }
 }
 

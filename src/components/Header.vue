@@ -4,7 +4,7 @@
       <a href="#" class="menu-btn" @click="$emit('showOpen')">
         <span></span>
       </a>
-      <button @click="$store.dispatch('getAll')">get</button>
+      <button @click="$store.dispatch('getPizza')">get</button>
       <router-link to="/" class="header__logo">
         <img width="38" src="../assets/img/pizza-logo.svg" alt="Pizza logo" />
         <div>

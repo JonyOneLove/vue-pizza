@@ -4,6 +4,7 @@ import useDoc from '@/composables/useDoc'
 export default createStore({
   state: {
     pizzas: [],
+    pizza: null,
     category: null,
     sortBy: {
       id: 0,
@@ -12,6 +13,7 @@ export default createStore({
     cartItems: new Map(),
   },
   getters: {
+    pizza: (state) => state.pizza,
     getAddedPizzasCount(state) {
       let totalCount = 0
       const pizzas = state.cartItems.values()
@@ -51,8 +53,11 @@ export default createStore({
     },
   },
   mutations: {
-    GET_PIZZA(state, pizzas) {
+    GET_PIZZAS(state, pizzas) {
       state.pizzas = pizzas
+    },
+    GET_PIZZA(state, pizza) {
+      state.pizza = pizza
     },
     SET_CATEGORY(state, categoryIndex) {
       state.category = categoryIndex
@@ -119,14 +124,14 @@ export default createStore({
     // async getPizzaAction({ commit }) {
     //   const response = await fetch('http://localhost:3000/pizzas')
     //   const json = await response.json()
-    //   commit('GET_PIZZA', json)
+    //   commit('GET_PIZZAS', json)
     // },
 
     /* firebase  */
-    async getAll({ commit }) {
+    async getPizzaAction({ commit }) {
       const { getCollection } = useDoc()
       const { documents } = await getCollection('pizzas')
-      commit('GET_PIZZA', documents)
+      commit('GET_PIZZAS', documents)
     },
     /* json-server  */
     // async getFilteredPizza(content, category) {
@@ -135,15 +140,21 @@ export default createStore({
     //   )
     //   const json = await response.json()
     //   content.commit('SET_CATEGORY', category)
-    //   content.commit('GET_PIZZA', json)
+    //   content.commit('GET_PIZZAS', json)
     // },
 
     /* firebase  */
-    async getCategoryPizza({ commit }, category) {
+    async getFilteredPizza({ commit }, category) {
       const { getFilteredCollection } = useDoc()
       const { documents } = await getFilteredCollection('pizzas', category)
       commit('SET_CATEGORY', category)
-      commit('GET_PIZZA', documents)
+      commit('GET_PIZZAS', documents)
+    },
+    async getPizza({ commit }, id) {
+      const { getDocument } = useDoc()
+      const { document } = await getDocument('pizzas', id)
+      console.log(document.value)
+      commit('GET_PIZZA', document)
     },
   },
   modules: {},

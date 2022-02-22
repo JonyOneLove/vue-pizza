@@ -19,7 +19,7 @@
             <Types />
             <Sizes />
           </div>
-          <button class="pizza-modal__btn">
+          <button class="pizza-modal__btn" @click="handleAddCart(pizza)">
             Добавить в коризну за {{ pizza.price }} Р
           </button>
         </div>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 import Types from './Types'
 import Sizes from './Sizes'
 
@@ -45,11 +45,16 @@ export default {
   },
   methods: {
     ...mapActions(['getPizza']),
+    ...mapMutations(['getPizza', 'ADD_CART']),
     openModal() {
       this.show = true
       // this.getPizza(id)
     },
     closeModal() {
+      this.show = false
+    },
+    handleAddCart(pizza) {
+      this.ADD_CART(pizza)
       this.show = false
     },
   },

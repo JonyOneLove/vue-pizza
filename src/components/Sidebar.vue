@@ -85,7 +85,7 @@ export default {
   width: 323px;
   left: 0;
   height: 100vh;
-  z-index: 9;
+  z-index: 12;
   &__header {
     display: flex;
     align-items: center;

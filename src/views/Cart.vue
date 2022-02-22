@@ -76,7 +76,7 @@
             <span>Очистить корзину</span>
           </div>
         </div>
-        <div class="content__items">
+        <div class="cart__body">
           <CartItem
             :pizza="pizza"
             v-for="pizza in addedPizzas"

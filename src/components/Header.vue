@@ -49,15 +49,16 @@
           <span v-else>0</span>
         </router-link>
       </div>
+      <p v-if="itemSize">jony</p>
     </div>
   </header>
 </template>
 
 <script>
-import { computed } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import { useStore } from 'vuex'
+
 export default {
-  //  props: ['showSidebar'],
   setup() {
     const store = useStore()
 
@@ -66,6 +67,12 @@ export default {
 
     return { totalCount, totalSum }
   },
+  data() {
+    return {
+      itemSize: false,
+    }
+  },
+  methods: {},
 }
 </script>
 
@@ -130,6 +137,31 @@ export default {
       &::after {
         transform: translateY(5px);
       }
+    }
+  }
+}
+
+@media (max-width: 799px) {
+  .header {
+    &__logo {
+      align-items: center;
+      h1 {
+        font-size: 16px;
+      }
+      p {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 570px) {
+  .header {
+    &__logo {
+    }
+    .menu-btn:nth-child(1) {
+      order: 3;
+      margin-left: 8px;
     }
   }
 }

@@ -48,7 +48,6 @@ export default {
 <style lang="scss">
 @import '@/assets/scss/app.scss';
 .categories {
-  // overflow-x: scroll;
   ul {
     display: flex;
     li {
@@ -74,6 +73,28 @@ export default {
         color: #fff;
       }
     }
+  }
+}
+
+@media (max-width: 1189px) {
+  .content {
+    &__top {
+      flex-wrap: wrap;
+    }
+  }
+  .categories {
+    margin-bottom: 15px;
+    ul {
+      li {
+        padding: 5px 30px;
+      }
+    }
+  }
+}
+
+@media (max-width: 885px) {
+  .categories {
+    overflow-x: scroll;
   }
 }
 </style>

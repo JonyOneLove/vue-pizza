@@ -81,18 +81,23 @@ export default {
     padding: 25px;
     background-color: #ffffff;
     position: relative;
-    width: 950px;
+    max-width: 924px;
     margin: 190px auto;
     border-radius: 20px;
     overflow: hidden;
     z-index: 2;
   }
   &__img {
-    padding: 10px;
-    border: 1px solid red;
+    height: 500px;
+    width: 50%;
+    position: relative;
     img {
-      width: 70%;
-      object-fit: cover;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      object-fit: contain;
     }
   }
   &__content {
@@ -143,6 +148,42 @@ export default {
   }
   to {
     opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .pizza-modal {
+    overflow-x: hidden;
+    overflow-y: visible;
+    position: fixed;
+    &__row {
+      display: flex;
+      flex-direction: column;
+    }
+    &__img {
+      height: 300px;
+      width: 100%;
+    }
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+    }
+    &__header {
+      margin-bottom: 20px;
+    }
+    &__text {
+      margin-bottom: 20px;
+    }
+    &__btn {
+      margin-top: 30px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .pizza-modal {
+    top: -77px;
   }
 }
 </style>

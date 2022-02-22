@@ -4,7 +4,6 @@
       <a href="#" class="menu-btn" @click="$emit('showOpen')">
         <span></span>
       </a>
-      <button @click="$store.dispatch('getPizza')">get</button>
       <router-link to="/" class="header__logo">
         <img width="38" src="../assets/img/pizza-logo.svg" alt="Pizza logo" />
         <div>
@@ -50,6 +49,7 @@
           <span v-else>0</span>
         </router-link>
       </div>
+      <p v-if="itemSize">jony</p>
     </div>
   </header>
 </template>
@@ -67,6 +67,12 @@ export default {
 
     return { totalCount, totalSum }
   },
+  data() {
+    return {
+      itemSize: false,
+    }
+  },
+  methods: {},
 }
 </script>
 
@@ -131,6 +137,31 @@ export default {
       &::after {
         transform: translateY(5px);
       }
+    }
+  }
+}
+
+@media (max-width: 799px) {
+  .header {
+    &__logo {
+      align-items: center;
+      h1 {
+        font-size: 16px;
+      }
+      p {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 570px) {
+  .header {
+    &__logo {
+    }
+    .menu-btn:nth-child(1) {
+      order: 3;
+      margin-left: 8px;
     }
   }
 }

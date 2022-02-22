@@ -55,6 +55,7 @@ export default {
     const pizzaCount = computed(() => store.getters.getPizzaCount(props.pizza))
     const handleAddCart = () => {
       store.commit('ADD_CART', props.pizza)
+      console.log(props.pizza)
     }
     return { handleAddCart, pizzaCount, pizzaImg }
   },

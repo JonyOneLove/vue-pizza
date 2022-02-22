@@ -2,17 +2,12 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAd4ICa2YBCU227Z4sM4SA2ax2HTh9U7II',
-
-  authDomain: 'vue-pizza-10c02.firebaseapp.com',
-
-  projectId: 'vue-pizza-10c02',
-
-  storageBucket: 'vue-pizza-10c02.appspot.com',
-
-  messagingSenderId: '167143395073',
-
-  appId: '1:167143395073:web:e4113d01d6cd8cf3a5d500',
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STORAGE,
+  messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER,
+  appId: process.env.VUE_APP_APP_ID,
 }
 
 const app = initializeApp(firebaseConfig)

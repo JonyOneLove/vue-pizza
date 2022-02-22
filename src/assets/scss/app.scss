@@ -33,16 +33,8 @@ body {
 
   &__items {
     display: grid;
-    gap: 32px;
+    gap: 35px;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-
-  @media (max-width: 799px) {
-    .content {
-      &__items {
-        display: block;
-      }
-    }
   }
 
   &__top {

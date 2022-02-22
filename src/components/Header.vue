@@ -7,7 +7,10 @@
       <router-link to="/" class="header__logo">
         <img width="38" src="../assets/img/pizza-logo.svg" alt="Pizza logo" />
         <div>
-          <h1>Vue Pizza JUST</h1>
+          <h1>
+            Vue <br />
+            Pizza
+          </h1>
           <p>самая вкусная пицца во вселенной</p>
         </div>
       </router-link>
@@ -104,6 +107,10 @@ export default {
       font-weight: 800;
     }
 
+    br {
+      display: none;
+    }
+
     p {
       color: #7b7b7b;
     }
@@ -158,6 +165,9 @@ export default {
 @media (max-width: 570px) {
   .header {
     &__logo {
+      br {
+        display: block;
+      }
     }
     .menu-btn:nth-child(1) {
       order: 3;

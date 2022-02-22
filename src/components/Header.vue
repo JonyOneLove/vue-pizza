@@ -7,7 +7,7 @@
       <router-link to="/" class="header__logo">
         <img width="38" src="../assets/img/pizza-logo.svg" alt="Pizza logo" />
         <div>
-          <h1>Vue Pizza YES</h1>
+          <h1>Vue Pizza GUT</h1>
           <p>самая вкусная пицца во вселенной</p>
         </div>
       </router-link>
